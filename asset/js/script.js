@@ -19,7 +19,7 @@ E se volessi un bottone per invertire la "direzione" del carosello?
 
 const formElement = document.querySelector('form');
 
-let sliderSpeed = 3000;
+let sliderSpeed = 2000;
 
 const slides = [
     {
@@ -134,15 +134,15 @@ function nextSlide(){
 }
 
 
-  // intercept click on the prev icon
-  
+// intercept click on the prev icon
+//clearInterval(nextSlideInterval);  
   
   // activeSlide = 0
 prevEl.addEventListener('click', prevSlide);
 
 function prevSlide() {
+
     console.log('cliccato su prev');
-  
   
     // select the current slide
     const currentSlide = slidesImages[activeSlide]
@@ -164,10 +164,8 @@ function prevSlide() {
         activeSlide--
     }
     
-    
     console.log(activeSlide);
-  
-  
+
     // select the next slide
     const nextSlide = slidesImages[activeSlide]
     console.log(nextSlide);
@@ -187,10 +185,16 @@ formElement.addEventListener('click', function(ev) {
 
     console.log(ev);
 
-    const clock = setInterval(function() {
+    clearInterval(nextSlideInterval);
 
-        clearInterval(clock);
+})
 
-    })
+formElement.addEventListener('click', function(ev) {
+    
+    ev.preventDefault();
+
+    console.log(ev);
+
+    
 
 })
