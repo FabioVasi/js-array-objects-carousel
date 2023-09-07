@@ -17,7 +17,7 @@ Bonus 2:
 E se volessi un bottone per invertire la "direzione" del carosello?
 */
 
-
+let sliderSpeed = 5000;
 
 const slides = [
     {
@@ -36,6 +36,8 @@ const slides = [
         image: './asset/img/05.webp'
     }
 ];
+
+console.log(slides);
   
 let activeSlide = 0;
   
@@ -46,9 +48,7 @@ const prevEl = document.querySelector('.prev');
 
 const nextEl = document.querySelector('.next');
   
-//console.log(slides.image);
-  
-slides.forEach((element, activeSlide) => {
+slides.forEach((element, index) => {
 
     console.log(`${element.image}`);
 
@@ -56,7 +56,7 @@ slides.forEach((element, activeSlide) => {
 
     console.log(slidePath);
 
-    const sliderMarkup = `<img class="${activeSlide === element.image ? 'active' : ''}" src="${slidePath}" alt="">`
+    const sliderMarkup = `<img class="${activeSlide === index ? 'active' : ''}" src="${slidePath}" alt="">`
 
     sliderImagesEl.insertAdjacentHTML('beforeend', sliderMarkup);
 
@@ -69,22 +69,26 @@ console.log(slidesImages);
 
 const thumbsElement = document.querySelector('.thumbnails');
   
-slides.forEach((element, activeSlide) => {
+slides.forEach((element, index) => {
 
     console.log(`${element.image}`);
 
     const thumbPath = element.image;
 
-    const thumbMarkup = `<img class="thumb ${activeSlide === element.image ? 'active' : ''}" src="${thumbPath}" alt="">`
+    const thumbMarkup = `<img class="thumb ${activeSlide === index ? 'active' : ''}" src="${thumbPath}" alt="">`
 
     thumbsElement.insertAdjacentHTML('beforeend', thumbMarkup);
 
 });
 
+let nextSlideInterval = setInterval(nextSlide, sliderSpeed);
 
+// sul click ferma la riproduzione automatica
 
 // intercept click on the next icon 
-nextEl.addEventListener('click', function(){
+nextEl.addEventListener('click', nextSlide);
+  
+function nextSlide(){
 
     console.log('cliccato su next');
   
@@ -125,13 +129,16 @@ nextEl.addEventListener('click', function(){
     // add to the next thumb the active class
     nextThumb.classList.add('active');
 
-});
-  
+}
+
+
   // intercept click on the prev icon
   
   
   // activeSlide = 0
-prevEl.addEventListener('click', function () {
+prevEl.addEventListener('click', prevSlide);
+
+function prevSlide() {
     console.log('cliccato su prev');
   
   
@@ -140,6 +147,12 @@ prevEl.addEventListener('click', function () {
     console.log(currentSlide);
     // remove the active class from the current slide
     currentSlide.classList.remove('active');
+
+    // select the active thumb
+    const currentThumb = document.querySelector('.thumbnails > img.active');
+    console.log(currentThumb);
+    // remove the active class from the active thumb
+    currentThumb.classList.remove('active');
   
     if (activeSlide === 0) {
       activeSlide = slidesImages.length - 1
@@ -158,4 +171,4 @@ prevEl.addEventListener('click', function () {
     console.log(nextSlide);
     // add the active class to the next slide
     nextSlide.classList.add('active');
-});
+}
