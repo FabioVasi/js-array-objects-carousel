@@ -179,7 +179,7 @@ function prevSlide() {
     nextThumb.classList.add('active');
 }
 
-formElement.addEventListener('click', function(ev) {
+document.getElementById('lock').addEventListener('click', function(ev) {
     
     ev.preventDefault();
 
@@ -189,12 +189,12 @@ formElement.addEventListener('click', function(ev) {
 
 })
 
-formElement.addEventListener('click', function(ev) {
+document.getElementById('unlock').addEventListener('submit', function(ev) {
     
     ev.preventDefault();
 
     console.log(ev);
 
-    
+    setInterval(nextSlide, sliderSpeed);
 
 })
