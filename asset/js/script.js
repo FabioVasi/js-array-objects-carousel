@@ -35,16 +35,16 @@ const slides = [
     {
         image: './asset/img/05.webp'
     }
-]
+];
   
 let activeSlide = 0;
   
 // select the dom elements
-const sliderImagesEl = document.querySelector('.slider .images')
+const sliderImagesEl = document.querySelector('.slider .images');
 
-const prevEl = document.querySelector('.prev')
+const prevEl = document.querySelector('.prev');
 
-const nextEl = document.querySelector('.next')
+const nextEl = document.querySelector('.next');
   
 //console.log(slides.image);
   
@@ -52,35 +52,36 @@ slides.forEach((element, activeSlide) => {
 
     console.log(`${element.image}`);
 
-    const slidePath = element;
+    const slidePath = element.image;
 
     console.log(slidePath);
 
-    const sliderMarkup = `<img class="${activeSlide === element ? 'active' : ''}" src="${slidePath}" alt="">`
+    const sliderMarkup = `<img class="${activeSlide === element.image ? 'active' : ''}" src="${slidePath}" alt="">`
 
     sliderImagesEl.insertAdjacentHTML('beforeend', sliderMarkup);
 
 });
-  
 
-const slidesImages = document.querySelectorAll('.slider .images > img')
+
+
+const slidesImages = document.querySelectorAll('.slider .images > img');
 console.log(slidesImages);
-  
 
-const thumbsElement = document.querySelector('.thumbnails')
+const thumbsElement = document.querySelector('.thumbnails');
   
 slides.forEach((element, activeSlide) => {
 
     console.log(`${element.image}`);
 
-    const thumbPath = element;
+    const thumbPath = element.image;
 
-    const thumbMarkup = `<img class="thumb ${activeSlide === element ? 'active' : ''}" src="${thumbPath}" alt="">`
+    const thumbMarkup = `<img class="thumb ${activeSlide === element.image ? 'active' : ''}" src="${thumbPath}" alt="">`
 
-    thumbsElement.insertAdjacentHTML('beforeend', thumbMarkup)
+    thumbsElement.insertAdjacentHTML('beforeend', thumbMarkup);
 
 });
-  
+
+
 
 // intercept click on the next icon 
 nextEl.addEventListener('click', function(){
@@ -88,16 +89,16 @@ nextEl.addEventListener('click', function(){
     console.log('cliccato su next');
   
     // select the current slide
-    const currentSlide = slidesImages[activeSlide]
+    const currentSlide = slidesImages[activeSlide];
     console.log(currentSlide);
     // remove the active class from the current slide
-    currentSlide.classList.remove('active')
+    currentSlide.classList.remove('active');
   
     // select the active thumb
-    const currentThumb = document.querySelector('.thumbnails > img.active')
+    const currentThumb = document.querySelector('.thumbnails > img.active');
     console.log(currentThumb);
     // remove the active class from the active thumb
-    currentThumb.classList.remove('active')
+    currentThumb.classList.remove('active');
   
     
     // activeSlide = 4
@@ -115,16 +116,16 @@ nextEl.addEventListener('click', function(){
     const nextSlide = slidesImages[activeSlide]
     console.log(nextSlide);
     // add the active class to the next slide
-    nextSlide.classList.add('active')
+    nextSlide.classList.add('active');
   
   
     // select the next thumb
     const nextThumb = document.querySelectorAll('.thumb')[activeSlide]
     console.log(nextThumb);
     // add to the next thumb the active class
-    nextThumb.classList.add('active')
+    nextThumb.classList.add('active');
 
-})
+});
   
   // intercept click on the prev icon
   
@@ -138,7 +139,7 @@ prevEl.addEventListener('click', function () {
     const currentSlide = slidesImages[activeSlide]
     console.log(currentSlide);
     // remove the active class from the current slide
-    currentSlide.classList.remove('active')
+    currentSlide.classList.remove('active');
   
     if (activeSlide === 0) {
       activeSlide = slidesImages.length - 1
@@ -156,5 +157,5 @@ prevEl.addEventListener('click', function () {
     const nextSlide = slidesImages[activeSlide]
     console.log(nextSlide);
     // add the active class to the next slide
-    nextSlide.classList.add('active')
-})
+    nextSlide.classList.add('active');
+});
