@@ -181,10 +181,16 @@ function prevSlide() {
     nextThumb.classList.add('active');
 }
 
-formElement.addEventListener('submit', function(ev) {
+formElement.addEventListener('click', function(ev) {
     
     ev.preventDefault();
 
     console.log(ev);
+
+    const clock = setInterval(function() {
+
+        clearInterval(clock);
+
+    })
 
 })

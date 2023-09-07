@@ -94,3 +94,7 @@ img
 	height: calc(100% / 5);
 	object-fit: cover;
 }
+button{
+    width: 120px;
+    height: 40px;
+}
