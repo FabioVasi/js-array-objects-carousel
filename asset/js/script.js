@@ -179,7 +179,11 @@ function prevSlide() {
     nextThumb.classList.add('active');
 }
 
-document.getElementById('lock').addEventListener('click', function() {
+document.getElementById('lock').addEventListener('click', function(ev) {
+    
+    ev.preventDefault();
+
+    console.log(ev);
 
     clearInterval(nextSlideInterval);
 
