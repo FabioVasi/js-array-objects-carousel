@@ -55,91 +55,52 @@ const slides = [
     }
 ]
   
-  let activeSlide = 0;
+let activeSlide = 0;
   
-  // select the dom elements
-  const sliderImagesEl = document.querySelector('.slider .images')
-  const prevEl = document.querySelector('.prev')
-  const nextEl = document.querySelector('.next')
+// select the dom elements
+const sliderImagesEl = document.querySelector('.slider .images')
+
+const prevEl = document.querySelector('.prev')
+
+const nextEl = document.querySelector('.next')
   
+//console.log(slides.image);
   
-  //console.log(sliderImagesEl);
-  
-  /* Print all images into the dom */
-  // loop over the slides 
-  for (let i = 0; i < slides.length; i++) {
-    const slidePath = slides[i];
+slides.forEach((element, activeSlide) => {
+
+    console.log(`${element.image}`);
+
+    const slidePath = element;
+
     console.log(slidePath);
-    
-    // for each slide we create the markup
-    const slideMarkup = `<img class="${activeSlide === i ? 'active' : '' }" src="${slidePath}" alt="">`
-    //console.log(slideMarkup);
+
+    const sliderMarkup = `<img class="${activeSlide === element ? 'active' : ''}" src="${slidePath}" alt="">`
+
+    sliderImagesEl.insertAdjacentHTML('beforeend', sliderMarkup);
+
+});
   
-    sliderImagesEl.insertAdjacentHTML('beforeend', slideMarkup)
+
+const slidesImages = document.querySelectorAll('.slider .images > img')
+console.log(slidesImages);
   
-  }
+
+const thumbsElement = document.querySelector('.thumbnails')
   
-  
-  /* 
-  
-  if(condition) {
-    // code to run
-  } else {
-    // code to run
-  }
-  
-  // terary operator
-  
-  condition ? 'code to run' : 'code to run'
-  
-  */
-  
-  
-  /* 
-  
-  MILESTONE 3
-  Al click dell'utente sulle frecce, il programma cambierà l’immagine attiva, che quindi verrà visualizzata al posto della precedente.
-  
-  */
-  
-  const slidesImages = document.querySelectorAll('.slider .images > img')
-  console.log(slidesImages);
-  
-  
-  
-  /* 
-  BONUS 1:
-  Aggiungere il ciclo infinito del carosello. Ovvero se è attiva la prima immagine e l'utente clicca la freccia per andare all’immagine precedente, dovrà comparire l’ultima immagine dell’array e viceversa.
-  
-  */
-  
-  /* 
-  
-  BONUS 2:
-  Aggiungere la visualizzazione di tutte le thumbnails sulla destra dell’immagine grande attiva, 
-  come nello screenshot proposto. Tutte le miniature avranno un layer di opacità scura, tranne quella corrispondente all’immagine attiva, che invece avrà un bordo colorato. 
-  Al click delle frecce, oltre al cambio di immagine attiva, gestire il cambio di miniatura attiva.
-  
-  */
-  
-  
-  const thumbsElement = document.querySelector('.thumbnails')
-  
-  for (let i = 0; i < slides.length; i++) {
-    const thumbPath = slides[i];
-    const thumbMarkup = `<img class="thumb ${activeSlide === i ? 'active' : ''}" src="${thumbPath}" alt="">`
-    //console.log(thumbMarkup);
-  
+slides.forEach((element, activeSlide) => {
+
+    const thumbPath = element;
+
+    const thumbMarkup = `<img class="thumb ${activeSlide === element ? 'active' : ''}" src="${thumbPath}" alt="">`
+
     thumbsElement.insertAdjacentHTML('beforeend', thumbMarkup)
-    
-  }
+
+});
   
-  
-  
-  
-  
-  // intercept click on the next icon 
-  nextEl.addEventListener('click', function(){
+
+// intercept click on the next icon 
+nextEl.addEventListener('click', function(){
+
     console.log('cliccato su next');
   
     // select the current slide
@@ -173,23 +134,19 @@ const slides = [
     nextSlide.classList.add('active')
   
   
-    /* TODO */
-  
-  
     // select the next thumb
     const nextThumb = document.querySelectorAll('.thumb')[activeSlide]
     console.log(nextThumb);
     // add to the next thumb the active class
     nextThumb.classList.add('active')
-  
-  
-  })
+
+})
   
   // intercept click on the prev icon
   
   
   // activeSlide = 0
-  prevEl.addEventListener('click', function () {
+prevEl.addEventListener('click', function () {
     console.log('cliccato su prev');
   
   
@@ -216,4 +173,4 @@ const slides = [
     console.log(nextSlide);
     // add the active class to the next slide
     nextSlide.classList.add('active')
-  })
+})
