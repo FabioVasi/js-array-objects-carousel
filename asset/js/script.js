@@ -15,28 +15,10 @@ al click di un bottone o già dall'inizio possiamo far partire, ad intervalli di
 
 Bonus 2:
 E se volessi un bottone per invertire la "direzione" del carosello?
-const slides = [
-    {
-        image: './asset/img/01.webp'
-    },
-    {
-        image: './asset/img/02.webp'
-    },
-    {
-        image: './asset/img/03.webp'
-    },
-    {
-        image: './asset/img/04.webp'
-    },
-    {
-        image: './asset/img/05.webp'
-    }
-]
 */
 
 
 
-/* Define the slides list */
 const slides = [
     {
         image: './asset/img/01.webp'
@@ -88,6 +70,8 @@ console.log(slidesImages);
 const thumbsElement = document.querySelector('.thumbnails')
   
 slides.forEach((element, activeSlide) => {
+
+    console.log(`${element.image}`);
 
     const thumbPath = element;
 
