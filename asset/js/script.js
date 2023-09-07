@@ -17,7 +17,9 @@ Bonus 2:
 E se volessi un bottone per invertire la "direzione" del carosello?
 */
 
-let sliderSpeed = 5000;
+const formElement = document.querySelector('form');
+
+let sliderSpeed = 3000;
 
 const slides = [
     {
@@ -171,4 +173,18 @@ function prevSlide() {
     console.log(nextSlide);
     // add the active class to the next slide
     nextSlide.classList.add('active');
+
+    // select the next thumb
+    const nextThumb = document.querySelectorAll('.thumb')[activeSlide]
+    console.log(nextThumb);
+    // add to the next thumb the active class
+    nextThumb.classList.add('active');
 }
+
+formElement.addEventListener('submit', function(ev) {
+    
+    ev.preventDefault();
+
+    console.log(ev);
+
+})
